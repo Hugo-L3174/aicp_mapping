@@ -5,7 +5,8 @@
   <arg name="registration_config_file"         default="$(find aicp_core)/config/icp/icp_autotuned.yaml"/>
   <arg name="aicp_config_file"                 default="$(find aicp_core)/config/aicp_config.yaml"/>
   <arg name="fixed_frame"                      default="map"/>
-  <arg name="map_from_file_path"               default="$(find gazebo_worlds_drs)/point_clouds/fire_college.ply"/>
+  <!-- <arg name="map_from_file_path"               default="$(find gazebo_worlds_drs)/point_clouds/fire_college.ply"/> -->
+  <arg name="map_from_file_path"               default=""/>
   <arg name="load_map_from_file"               default="false"/>
   <arg name="localize_against_prior_map"       default="false"/>
   <arg name="localize_against_built_map"       default="false"/>
@@ -20,6 +21,11 @@
   <arg name="saveProbs"                        default="$(find aicp_core)/data/classification/probs_opencv3.txt"/>
   <arg name="modelLocation"                    default="$(find aicp_core)/data/models/svm_opencv3.xml" />
 
+  <arg name="lidar_channel"                    default="/point_cloud_filter/velodyne/point_cloud_filtered"/>
+  <arg name="batch_size"                       default="7"/>
+
+  <arg name="inertial_frame"                   default="/odom"/>
+  <arg name="pose_odom"                        default="/state_estimator/pose_in_odom"/>
 
   <arg name="write_input_clouds_to_file"       default="false"/>
   <arg name="process_input_clouds_from_file"   default="false"/>
@@ -38,7 +44,12 @@
     <param name="fixed_frame"                   value="$(arg fixed_frame)" />
     <!-- default is /aicp/pose_corrected -->
     <param name="output_channel"                value="/aicp/pose_corrected" />
-    <param name="lidar_channel"                   value="/point_cloud_filter/velodyne/point_cloud_filtered" />
+
+    <param name="inertial_frame"                value="$(arg inertial_frame)" />
+
+    <param name="pose_body_channel"             value="$(arg pose_odom)" />
+
+    <param name="lidar_channel"                 value="$(arg lidar_channel)" />
 
     <!-- Prior map info -->
     <param name="load_map_from_file"            value="$(arg load_map_from_file)" />
@@ -65,7 +76,7 @@
     <param name="max_queue_size"      value="1" />
 
     <!-- 3D point cloud characteristics -->
-    <param name="batch_size"                    value="7" />
+    <param name="batch_size"                    value="$(arg batch_size)" />
   	<!-- Visualize and store -->
     <param name="verbose"                       value="false" />
 

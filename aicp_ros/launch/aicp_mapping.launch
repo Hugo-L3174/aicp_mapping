@@ -13,6 +13,11 @@
   <arg name="process_input_clouds_from_file"   default="false"/>
   <arg name="process_input_clouds_folder"      default="/tmp/aicp_data"/>
 
+  <arg name="lidar_channel"          default="/point_cloud_filter/velodyne/point_cloud_filtered"/>
+  <arg name="batch_size"             default="7"/>
+  <arg name="pose_odom"              default="/state_estimator/pose_in_odom"/>
+  <arg name="inertial_frame"         default="/odom"/>
+
   <include file="$(find aicp_ros)/launch/aicp.launch">
     <arg name="load_map_from_file"         value="$(arg load_map_from_file)"/>
     <arg name="localize_against_prior_map" value="$(arg localize_against_prior_map)"/>
@@ -21,6 +26,13 @@
     <arg name="write_input_clouds_to_file"     value="$(arg write_input_clouds_to_file)"/>
     <arg name="process_input_clouds_from_file" value="$(arg process_input_clouds_from_file)"/>
     <arg name="process_input_clouds_folder"    value="$(arg process_input_clouds_folder)"/>
+
+    <arg name="lidar_channel" value="$(arg lidar_channel)"/>
+    <arg name="batch_size"    value="$(arg batch_size)"/>
+    <arg name="pose_odom"     value="$(arg pose_odom)"/>
+
+    <arg name="inertial_frame" value="$(arg inertial_frame)"/>
+    <arg name="fixed_frame"    value="$(arg fixed_frame)"/>
   </include>
   
   <group if="$(arg load_map_from_file)">
