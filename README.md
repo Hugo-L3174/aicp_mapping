@@ -1,6 +1,7 @@
 # Auto-tuned ICP
 
-This is a fork from the Gepetto group at LAAS-CNRS, to work on an Ouster lidar.
+This project was originaly created by Maurice Fallon (ORI-DRS). This repo is fork from the Gepetto group at LAAS-CNRS,
+to work on an Ouster lidar.
 
 
 Auto-tuned Iterative Closest Point \(AICP\) is a module for laser-based localization and mapping \(Nobili et al., ICRA 2017\). The implementation of AICP includes a module for localization failure prediction \(Nobili et al., ICRA 2018\).
@@ -167,4 +168,3 @@ The License information is available in the LICENSE file contained in this proje
 
 Author: Simona Nobili, March 2019.
 Email: snobili@robots.ox.ac.uk, simona.nobili@ed.ac.uk
-
