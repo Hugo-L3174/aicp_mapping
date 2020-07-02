@@ -14,10 +14,7 @@ find_package(catkin REQUIRED COMPONENTS aicp_core
                                         std_msgs
                                         sensor_msgs
                                         geometry_msgs
-                                        nav_msgs)
-                        
-#find_package(aicp_core)
-#message("++++++++++++++++++++++ ${aicp_core_LIBRARIES}") # contains all libraries and dependencies declated in catkin_package of aicp_core                                        
+                                        nav_msgs)                                       
 
 catkin_package(
   INCLUDE_DIRS include
@@ -33,12 +30,6 @@ catkin_package(
                  sensor_msgs
                  geometry_msgs
                  nav_msgs)
-
-# Add include directories
-#include_directories(
-  #include
-  #${catkin_INCLUDE_DIRS}
-#)
 
 
 add_library(${PROJECT_NAME} SHARED src/app_ros.cpp
