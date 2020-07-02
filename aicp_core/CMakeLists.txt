@@ -12,19 +12,9 @@ find_package(Eigen3 REQUIRED)
 find_package(octomap REQUIRED)
 find_package(OpenCV 3.0 REQUIRED)
 
-# Add include directories
-#include_directories(
-  #include
-  #${libpointmatcher_INCLUDE_DIRS}
-  #${EIGEN3_INCLUDE_DIRS}
-  #${PCL_INCLUDE_DIRS}
-  #${OCTOMAP_INCLUDE_DIRS}
-#)
-
 catkin_package(
   INCLUDE_DIRS include
-  LIBRARIES #${AICP_CORE_LIB} # libraries which will be visible outside 
-            aicpRegistration
+  LIBRARIES aicpRegistration# libraries which will be visible outside 
             aicpOverlap
             aicpClassification
             aicpUtils 
@@ -99,38 +89,26 @@ target_link_libraries(aicpRegistration ${libpointmatcher_LIBRARIES}
                                        ${PCL_LIBRARIES}
                                        yaml-cpp)
 
-                                      
-################  
-# Core library #
-################
-#add_library(${AICP_CORE_LIB} SHARED src/registration/app.cpp
-#                                    src/registration/yaml_configurator.cpp)
-#TARGET_INCLUDE_DIRECTORIES(${AICP_CORE_LIB} PUBLIC $<INSTALL_INTERFACE:include/aicp_core>)
-#target_link_libraries(${AICP_CORE_LIB} yaml-cpp
-#                                       aicpRegistration
-#                                       aicpOverlap
-#                                       aicpClassification
-#                                       aicpUtils)
 
 
 #############
 # Unit test #
 #############
 add_executable(aicp_test test/aicp_test.cpp)
-target_link_libraries(aicp_test aicpRegistration aicpOverlap aicpClassification aicpUtils) #${AICP_CORE_LIB}
+target_link_libraries(aicp_test aicpRegistration aicpOverlap aicpClassification aicpUtils)
 
 
 #############
 ## Install ##
 #############
 
-install(TARGETS aicpRegistration aicpOverlap aicpUtils aicpClassification #${AICP_CORE_LIB} 
+install(TARGETS aicpRegistration aicpOverlap aicpUtils aicpClassification 
         ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
         LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
         RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
 install(DIRECTORY include/aicp_registration/
-        DESTINATION include/aicp_registration) #${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+        DESTINATION include/aicp_registration)
 
 install(DIRECTORY include/aicp_overlap/
         DESTINATION include/aicp_overlap)
