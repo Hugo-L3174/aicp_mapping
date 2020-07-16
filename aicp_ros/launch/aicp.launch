@@ -30,6 +30,7 @@
   <arg name="write_input_clouds_to_file"       default="false"/>
   <arg name="process_input_clouds_from_file"   default="false"/>
   <arg name="process_input_clouds_folder"      default="/tmp/aicp_data/"/>
+  <arg name="reference_update_frequency"       default="2"/>
 
   <!-- Run AICP (command line configuration) -->
   <node pkg="aicp_ros" type="aicp_ros_node" name="aicp_ros_node" output="screen">
@@ -69,7 +70,7 @@
     <param name="merge_aligned_clouds_to_map"   value="$(arg merge_aligned_clouds_to_map)" /> <!-- true to generate Ground Truth (David IROS19) -->
     <!-- Reference update policy -->
     <param name="failure_prediction_mode"       value="false" />
-    <param name="reference_update_frequency"    value="5" />
+    <param name="reference_update_frequency"    value="$(arg reference_update_frequency)" />
     <!-- Max allowed correction magnitude (probably failed alignment otherwise) -->
     <param name="max_correction_magnitude"      value="1.0" /> <!-- 1.5 to generate Ground Truth (David IROS19) -->
     <!-- Max length of the queue of accumulated point clouds. was 100 previously -->

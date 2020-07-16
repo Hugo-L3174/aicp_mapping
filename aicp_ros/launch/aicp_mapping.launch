@@ -17,6 +17,7 @@
   <arg name="batch_size"             default="7"/>
   <arg name="pose_odom"              default="/state_estimator/pose_in_odom"/>
   <arg name="inertial_frame"         default="/odom"/>
+  <arg name="reference_update_frequency"  default="2"/>
 
   <include file="$(find aicp_ros)/launch/aicp.launch">
     <arg name="load_map_from_file"         value="$(arg load_map_from_file)"/>
@@ -33,6 +34,7 @@
 
     <arg name="inertial_frame" value="$(arg inertial_frame)"/>
     <arg name="fixed_frame"    value="$(arg fixed_frame)"/>
+    <arg name="reference_update_frequency" value="$(arg reference_update_frequency)"/>
   </include>
   
   <group if="$(arg load_map_from_file)">
